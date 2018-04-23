@@ -7,7 +7,9 @@ need to have docker, docker-compose installed
 
 # Start and Stop
 make postgres-up for starting postgres
+
 Listen to port 15432 for postgres service
+
 make postgres-down for stopping postgres
 
 
