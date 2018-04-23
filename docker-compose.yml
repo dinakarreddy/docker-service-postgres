@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10.3
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./volumes/postgres/data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 15432:5432
+    healthcheck:
+      test: "pg_isready -U postgres -d postgres"
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
